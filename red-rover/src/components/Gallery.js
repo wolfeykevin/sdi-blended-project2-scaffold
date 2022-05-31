@@ -14,17 +14,12 @@ const Gallery = () => {
   }, [])
 
   return (
-    <div>
+    <ul id="roverGallery">
       {images.map(image => {
         return <img key={image.id} src={image.url} alt={image.id}></img>
       })}
-    </div>
+    </ul>
   )
 }
 //
 export default Gallery;
-
-
-// data.photos.map(item => {
-//   return {id: item.id, url: item.img_src}
-// })
