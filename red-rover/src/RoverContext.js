@@ -25,13 +25,18 @@ const AppProvider = ({ children }) => {
       Perseverance: 0
   })
 
+  const [galleryRover, setGalleryRover] = useState('')
+
   const values = {
     votes,
-    maxSol
+    maxSol,
+    galleryRover,
   }
+
   const setters = {
     setVotes: () => {},
-    setMaxSol: () => {}
+    setMaxSol: () => {},
+    setGalleryRover: () => {}
   }
 
   return (
