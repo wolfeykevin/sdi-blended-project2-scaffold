@@ -34,10 +34,11 @@ const AppProvider = ({ children }) => {
     setMaxSol: () => {}
   }
 
-  return
+  return (
     <RoverContext.Provider value={{values, setters}}>
       {children}
-    </RoverContext.Provider>;
+    </RoverContext.Provider>
+  );
 };
 
 
