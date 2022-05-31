@@ -1,14 +1,17 @@
 import './Gallery.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import { RoverContext } from '../RoverContext';
 
 const Gallery = () => {
+
+  const { values, setters } = useContext(RoverContext)
 
   const [ images, setImages ] = useState([]);
 
   useEffect(() => {
-    fetch('https://mars-photos.herokuapp.com/api/v1/rovers/curiosity/photos?sol=1000&page=1')
+    fetch(`https://mars-photos.herokuapp.com/api/v1/rovers/${values.galleryRover}/photos?sol=100&page=1`)
     .then(res => res.json())
     .then(data => setImages(data.photos.map(item => {
       return {id: item.id, url: item.img_src}
@@ -26,6 +29,5 @@ const Gallery = () => {
 
   )
 }
-//
 
 export default Gallery;

@@ -9,29 +9,26 @@ const Landing = () => {
   const {values, setters} = useContext(RoverContext);
   return (
     <>
-<<<<<<< HEAD
       <h1>Mars Rover Photo Gallery and Quiz</h1>
-      <div className='instructionsText'> 
+      <div className='instructionsText'>
         <p>Select a rover to see its photo gallery or click the blue button below to start the quiz!</p>
       </div>
       <div className='images'>
         <Link to={`/gallery/spirit`} onClick={() => {setters.setGalleryRover("spirit")}}>
-          {<img src={"/images/rover-portrait-2-spirit.png"} alt="Spirit"/>} 
+          {<img src={"/images/rover-portrait-2-spirit.png"} alt="Spirit"/>}
         </Link>
         <Link to={`/gallery/opportunity`} onClick={() => {setters.setGalleryRover("opportunity")}}>
-          {<img src={"/images/rover-portrait-3-opportunity.png"} alt="Opportunity"/>} 
+          {<img src={"/images/rover-portrait-3-opportunity.png"} alt="Opportunity"/>}
         </Link>
         <Link to={`/gallery/curiosity`} onClick={() => {setters.setGalleryRover("curiosity")}}>
           {<img src={"/images/rover-portrait-4-curiosity.png"} alt="Curiosity"/>}
         </Link>
         <Link to={`/gallery/perseverance`} onClick={() => {setters.setGalleryRover("perseverance")}}>
-          {<img src={"/images/rover-portrait-5-perseverance.png"} alt="Opportunity"/>} 
+          {<img src={"/images/rover-portrait-5-perseverance.png"} alt="Opportunity"/>}
         </Link>
       </div>
       <button onClick={() => { nav(`/quiz/1`) }}>Start Quiz!</button>
-=======
 
->>>>>>> 862f99637fe807d58b3a4fcc3beac7993bd8c004
     </>
   )
 }
