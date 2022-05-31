@@ -9,6 +9,7 @@ const Landing = () => {
   const {values, setters} = useContext(RoverContext);
   return (
     <>
+<<<<<<< HEAD
       <h1>Mars Rover Photo Gallery and Quiz</h1>
       <div className='instructionsText'> 
         <p>Select a rover to see its photo gallery or click the blue button below to start the quiz!</p>
@@ -28,6 +29,9 @@ const Landing = () => {
         </Link>
       </div>
       <button onClick={() => { nav(`/quiz/1`) }}>Start Quiz!</button>
+=======
+
+>>>>>>> 862f99637fe807d58b3a4fcc3beac7993bd8c004
     </>
   )
 }
