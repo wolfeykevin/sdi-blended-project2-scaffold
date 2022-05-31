@@ -1,5 +1,6 @@
 import './Gallery.css';
 import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 const Gallery = () => {
@@ -15,12 +16,16 @@ const Gallery = () => {
   }, [])
 
   return (
-    <ul id="roverGallery">
-      {images.map(image => {
-        return <img key={image.id} src={image.url} alt={image.id}></img>
-      })}
-    </ul>
+    <div className='flex-container'>
+      <ul className="roverGallery">
+        {images.map(image => (
+            <img id="roverImage" key={image.id} src={image.url} alt={image.id}></img>
+        ))}
+      </ul>
+    </div>
+
   )
 }
 //
+
 export default Gallery;
