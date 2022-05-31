@@ -34,9 +34,9 @@ const AppProvider = ({ children }) => {
   }
 
   const setters = {
-    setVotes: () => {},
-    setMaxSol: () => {},
-    setGalleryRover: () => {}
+    setVotes,
+    setMaxSol,
+    setGalleryRover,
   }
 
   return (
