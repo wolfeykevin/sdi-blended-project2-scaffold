@@ -7,18 +7,16 @@ import { Gallery, Winning, Quiz, Landing } from './components/'
 function App() {
 
   return (
-    // <AppProvider>
-    //   <Router>
-    //     <Routes>
-    //       <Route path="/" element={<Landing/>} />
-    //       <Route path="/quiz/:id" element={<Quiz/>} />
-    //       <Route path="/gallery/:rover" element={<Gallery/>} />
-    //       <Route path="/winning/:rover" element={<Winning/>} />
-    //     </Routes>
-    //   </Router>
-    // </AppProvider>
-
-    <Gallery />
+    <AppProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Landing/>} />
+          <Route path="/quiz/:id" element={<Quiz/>} />
+          <Route path="/gallery/:rover" element={<Gallery/>} />
+          <Route path="/winning/:rover" element={<Winning/>} />
+        </Routes>
+      </Router>
+    </AppProvider>
   );
 }
 
