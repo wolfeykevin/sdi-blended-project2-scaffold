@@ -25,19 +25,25 @@ const AppProvider = ({ children }) => {
       Perseverance: 0
   })
 
+  const [galleryRover, setGalleryRover] = useState('')
+
   const values = {
     votes,
-    maxSol
-  }
-  const setters = {
-    setVotes: () => {},
-    setMaxSol: () => {}
+    maxSol,
+    galleryRover,
   }
 
-  return
+  const setters = {
+    setVotes: () => {},
+    setMaxSol: () => {},
+    setGalleryRover: () => {}
+  }
+
+  return (
     <RoverContext.Provider value={{values, setters}}>
       {children}
-    </RoverContext.Provider>;
+    </RoverContext.Provider>
+  );
 };
 
 
