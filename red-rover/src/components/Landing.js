@@ -13,29 +13,29 @@ const Landing = () => {
   const nav= useNavigate()
   const {values, setters} = useContext(RoverContext);
   return (
-    
+
       <StyledBackground>
-        <StyledHeader>Mars Rover Photo Gallery and Quiz</StyledHeader>
+        <StyledHeader data-testId='header'>Mars Rover Photo Gallery and Quiz</StyledHeader>
         <StyledParagraph>
           Select a rover to see its photo gallery or click the blue button below to start the quiz!
         </StyledParagraph>
         <StyledRoverDiv>
           <div>
-            <Link to={`/gallery/spirit`} onClick={() => {setters.setGalleryRover("spirit")}}>
+            <Link data-testId='linkOne' to={`/gallery/spirit`} onClick={() => {setters.setGalleryRover("spirit")}}>
               {<StyledImage src={"/images/rover-portrait-2-spirit.png"} alt="Spirit"/>}
             </Link>
-            <Link to={`/gallery/opportunity`} onClick={() => {setters.setGalleryRover("opportunity")}}>
+            <Link data-testId='linkTwo' to={`/gallery/opportunity`} onClick={() => {setters.setGalleryRover("opportunity")}}>
               {<StyledImage src={"/images/rover-portrait-3-opportunity.png"} alt="Opportunity"/>}
             </Link>
-            <Link to={`/gallery/curiosity`} onClick={() => {setters.setGalleryRover("curiosity")}}>
+            <Link data-testId='linkThree' to={`/gallery/curiosity`} onClick={() => {setters.setGalleryRover("curiosity")}}>
               {<StyledImage src={"/images/rover-portrait-4-curiosity.png"} alt="Curiosity"/>}
             </Link>
-            <Link to={`/gallery/perseverance`} onClick={() => {setters.setGalleryRover("perseverance")}}>
+            <Link data-testId='linkFour' to={`/gallery/perseverance`} onClick={() => {setters.setGalleryRover("perseverance")}}>
               {<StyledImage src={"/images/rover-portrait-5-perseverance.png"} alt="Opportunity"/>}
             </Link>
           </div>
             <StyledButton>
-              <Button onClick={() => { nav(`/quiz/1`) }} variant="contained" size="large">
+              <Button data-testId='btn' onClick={() => { nav(`/quiz/1`) }} variant="contained" size="large">
                   Start Quiz!
               </Button>
             </StyledButton>
@@ -58,7 +58,7 @@ const StyledBackground = styled.div`
   height: 100vh;
 
   button: {
-    
+
   }
 `;
 const StyledHeader = styled.h1`
@@ -77,7 +77,7 @@ const StyledImage = styled.img`
   box-shadow: 8px 8px 32px 8px #000000;
   transition: all 0.75s ease;
   &:hover {
-    transform: matrix(1.2, 0, 0, 1.2, -16, 32) 
+    transform: matrix(1.2, 0, 0, 1.2, -16, 32)
   }
 `;
 
@@ -108,6 +108,6 @@ const StyledButton = styled.div`
     transform: scale(1.2)
 
   }
-  
-  
+
+
 `;
