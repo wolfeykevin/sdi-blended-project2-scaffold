@@ -11,31 +11,41 @@ const RoverContext = React.createContext();
 const AppProvider = ({ children }) => {
 
   const [votes, setVotes] = useState( {
-    Curiosity: 0,
-    Spirit: 0,
-    Opportunity: 0,
-    Perseverance: 0,
+    curiosity: 0,
+    spirit: 0,
+    opportunity: 0,
+    perseverance: 0,
     total: 0
   });
 
   const [maxSol, setMaxSol] = useState( {
-    Curiosity: 0,
-      Spirit: 0,
-      Opportunity: 0,
-      Perseverance: 0
-  })
+      curiosity: 0,
+      spirit: 0,
+      opportunity: 0,
+      perseverance: 0
+  });
+
+  const [ quizPhotos, setQuizPhotos ] = useState( {
+    curiosity: [],
+    spirit: [],
+    opportunity: [],
+    perseverance: [],
+    winner: []
+  });
 
   const [galleryRover, setGalleryRover] = useState('')
 
   const values = {
     votes,
     maxSol,
+    quizPhotos,
     galleryRover,
   }
 
   const setters = {
     setVotes,
     setMaxSol,
+    setQuizPhotos,
     setGalleryRover,
   }
 
