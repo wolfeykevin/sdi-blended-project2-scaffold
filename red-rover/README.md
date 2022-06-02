@@ -12,7 +12,7 @@
 
     Enter your github credentials and clone the repository.
 
-3)  Navigate to the created git clone directory and install required dependencies by entering the following commands in your terminal, one at a time:
+3)  Navigate to the create git clone directory and install required dependencies by entering the following commands in your terminal, one at a time:
 
     >npm install react-router-dom
 

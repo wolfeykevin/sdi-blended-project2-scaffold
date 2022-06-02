@@ -30,7 +30,13 @@ td {
 
 .winning-photos {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.winning-photos img {
+  height: 400px;
+  width: auto;
 }
 
 .cardImg {
@@ -40,5 +46,9 @@ td {
 
 .body {
   background-image: linear-gradient(to bottom right, rgb(209, 164, 61), rgb(139, 29, 51));
-  position: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
 }
