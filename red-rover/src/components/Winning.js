@@ -28,7 +28,7 @@ const { values, setters } = useContext(RoverContext);
   }
 
   return (
-    <>
+    <div className="body">
     <h1 data-testId='headerOne' className='winning-header'>The winner is... {selected.name}!</h1>
 
     <div className='flex-contain'>
@@ -71,7 +71,7 @@ const { values, setters } = useContext(RoverContext);
         })
       }
     </div>
-    </>
+    </div>
   )
 }
 

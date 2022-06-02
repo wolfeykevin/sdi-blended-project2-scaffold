@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# **Welcome to SDI #10: Project 2, Martian Rover Exploration**
+##### Project By:  Cybyl Hancock, Daniel Salazar, Zachary Haines, Darius DeSpain, and Kevin Wolfe
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### **Repository Directions:**
+1)  Ensure you're connected to the internet; the project requires an internet connection for API fetch requests and testing.
 
-## Available Scripts
+2)  Navigate to where you want to clone the repository.
 
-In the project directory, you can run:
+2)  Fork and clone the repository by opening your terminal and entering:
 
-### `npm start`
+    >git clone (github address of the repository)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    Enter your github credentials and clone the repository.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3)  Navigate to the created git clone directory and install required dependencies by entering the following commands in your terminal, one at a time:
 
-### `npm test`
+    >npm install react-router-dom
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    >>Installs router package
 
-### `npm run build`
+    >npm install --save styled-components
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    >>Installs Styled components
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    >npm install @mui/material
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    >>Installs MUI
 
-### `npm run eject`
+    >npm install @mui/styles --force
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    >>Installs MUI styling
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    >npm install @mui/icons-materials
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    >>Installs MUI icons
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    >npm install @emotion/react @emotion/styled
 
-## Learn More
+    >>Installs CSS/JS Emotion library
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    >npm install --save-dev cypress @testing-library/cypress
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    >>Installs Cypress for testing
 
-### Code Splitting
+    >npm install --save-dev @testing-library/react
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    >>Installs React testing library for unit testing
 
-### Analyzing the Bundle Size
+    >npm install msw
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    >>Installs Mock Service Worker for mock testing
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Project Objectives:
+>1)  Should utilize functional Hooks-based React Components.
+>2)  Should implement standard hooks such as useState, useEffect, and useContext.
+>3)  Should recognize situations and implement custom hooks where they can provide dynamic reusable hooks for multiple components to utilize.
+>4)  Should implement at least 3 separate routes using React Router.
+>5)  Should handle wildcard/dynamic routes client-side.
+>6)  Should gracefully handle page refreshes on non-root routes.
+>7)  Should implement testing on all top-level components.
+>8)  Unit testing should be implemented for any functionality deemed critical to a component.
+>9)  End to end testing should be implemented to ensure that the different components can work properly together to achieve their intended purpose.
+>10)  UI testing with Cypress should be implemented to ensure that the application as a whole behaves functionally as intended as well as behaving as expected for a         potential user.
+>11)  Should effectively implement styling
+>12)  Feel free to use any styling libraries and/or philosophies that seems appropriate to your app, as long as your group stays consistent and you are able to achieve       an effective implementation and appealing, visually cohesive final product.
+>>12a)  You may utilize a library like styled-components or material-ui. If you'd like to make use of a different library or approach than those covered in the                 curriculum thus far, keep in mind that troubleshooting from instructors may be more limited depending on your choice.
+>>
+>>12b)  No hard styling guides or requirements will be assessed, just ensure that the styling for each component matches well with the rest of the application.
+        Should implement live data from a third party API or utilize dummy data that you create.

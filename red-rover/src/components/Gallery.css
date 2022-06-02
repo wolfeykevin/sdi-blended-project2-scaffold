@@ -13,14 +13,14 @@
   flex-wrap: wrap;;
   justify-content: center;
   /* margin-top: 8vh; */
-  background-color: #f7d3aa;
-
+  /* background-color: #f7d3aa; */
+  background-color: transparent;
 }
 
-.flex-container h1 {
+/* .flex-container h1 {
   text-decoration: underline;
   color: #f3e3d6;
-  background-color: #6e2200;
+  background-image: url("/images/background-landing.jpg");
   width: 100%;
   height: 100px;
   padding-top: 10vh;
@@ -28,7 +28,7 @@
   margin-top: 0px;
   text-align: center;
   text-shadow: 1px 1px 2px rgb(255, 255, 255), 0 0 25px rgb(139, 5, 5), 0 0 5px rgb(0, 0, 0);
-}
+} */
 
 .flex-container img {
   /* max-width: 250px; */
@@ -42,8 +42,22 @@
 }
 
 .galleryBody {
-  position: absolute;
+  position: fixed;
+  overflow-y: scroll;
   bottom: 0;
   top: 0;
-  background-color: #f7d3aa;
+  background-image: linear-gradient(to bottom right, rgb(209, 164, 61), rgb(139, 29, 51))
 }
+
+.roverGallery img:hover{
+  transform: scale(1.1);
+  /* transform: matrix(1.2, 0, 0, 1.2, -16, 32) */
+}
+
+/* R139
+G29
+B51
+
+R209
+G164
+B61*/

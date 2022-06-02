@@ -73,6 +73,7 @@ const StyledImage = styled.img`
   width: 200px;
   // padding: 20px;
   margin: 20px;
+  border-radius: 1rem;
   justify-content: center;
   box-shadow: 8px 8px 32px 8px #000000;
   transition: all 0.75s ease;
