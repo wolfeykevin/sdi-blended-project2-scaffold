@@ -16,7 +16,7 @@ const { values, setters } = useContext(RoverContext);
   let location = useLocation();
   let path = location.pathname;
   let roverName = path.slice(9);
-  
+
   if(path.includes('curiosity')) {
     selected = curiosityObj
   } else if(path.includes('spirit')) {
@@ -27,6 +27,10 @@ const { values, setters } = useContext(RoverContext);
     selected = opportunityObj
   } else {
     selected = noObj
+  }
+
+  if (roverName === '') {
+    roverName = 'curiosity'
   }
 
   return (

@@ -11,8 +11,17 @@ const setup = () => render(
   </AppProvider>
   );
 
-  describe('Gallery', () => {
+  describe('Landing', () => {
 
+    // test header by role
+    test('should display header - new', () => {
+      setup();
+      let header = screen.getByRole('heading');
+      expect(header).toBeInTheDocument();
+    })
+
+    // ---------
+    
     test('should display header', () => {
       setup();
       let header = screen.getByTestId('header');

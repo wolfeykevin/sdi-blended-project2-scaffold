@@ -26,20 +26,22 @@ const AppProvider = ({ children }) => {
   });
 
   const [ quizPhotos, setQuizPhotos ] = useState( {
-    curiosity: [],
+    curiosity: ["http://mars.nasa.gov/mer/gallery/all/1/f/200/1F145938997ESF3505P1127L0M1-BR.JPG", "http://mars.nasa.gov/mer/gallery/all/1/f/200/1F145938997ESF3505P1127L0M1-BR.JPG", "http://mars.nasa.gov/mer/gallery/all/1/f/200/1F145938997ESF3505P1127L0M1-BR.JPG"],
     spirit: [],
     opportunity: [],
-    perseverance: [],
-    winner: ["http://mars.nasa.gov/mer/gallery/all/1/f/200/1F145938997ESF3505P1127L0M1-BR.JPG", "http://mars.nasa.gov/mer/gallery/all/1/f/200/1F145938997ESF3505P1127L0M1-BR.JPG", "http://mars.nasa.gov/mer/gallery/all/1/f/200/1F145938997ESF3505P1127L0M1-BR.JPG"]
+    perseverance: []
   });
 
   const [galleryRover, setGalleryRover] = useState('')
+
+  const [isLoading, setIsLoading] = useState('false');
 
   const values = {
     votes,
     maxSol,
     quizPhotos,
     galleryRover,
+    isLoading
   }
 
   const setters = {
@@ -47,6 +49,7 @@ const AppProvider = ({ children }) => {
     setMaxSol,
     setQuizPhotos,
     setGalleryRover,
+    setIsLoading
   }
 
   return (

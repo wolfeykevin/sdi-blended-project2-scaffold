@@ -46,23 +46,24 @@ const Quiz = () => {
   /* --- Section II - Fetch and Select Rover Photos --- */   
 
   // sol will be used
-  const [sol, setSol] = useState(0);
+  let sol = 1;
 
   // define accumulator variable to store an array of promises for Promise.all
   let promiseArray = [];
 
   // fetch photos by sol date for each rover
   useEffect(() => {
+    setters.setIsLoading(true);
     rovers.forEach((roverName) => {
-      //generate number between 0 and values.maxSol.[rover]
-      // console.log(values.maxSol)
-      // setSol(Math.floor((Math.random() * values.maxSol[roverName])))
-      
-      promiseArray.push(fetch(`https://mars-photos.herokuapp.com/api/v1/rovers/${roverName}/photos?sol=10`)
+      // generate number between 1 and values.maxSol.[rover]
+      // console.log(values.maxSol[roverName])
+      sol = (Math.floor((Math.random() * values.maxSol[roverName])) + 1)
+      // console.log(`sol for ${roverName}: `, sol);
+
+      promiseArray.push(fetch(`https://mars-photos.herokuapp.com/api/v1/rovers/${roverName}/photos?sol=${sol}`)
         .then(response => response.json())
         .then(data => data.photos.map(photo => photo["img_src"]))
-        .then(data => roverPhotos[roverName] = data))
-      
+        .then(data => roverPhotos[roverName] = data)) 
     })
     Promise.all(promiseArray)
       .then(()=> {
@@ -76,6 +77,7 @@ const Quiz = () => {
           })
         })
         setters.setQuizPhotos(finalPhotos);
+        setters.setIsLoading(false);
       })
   }, [])
 
@@ -84,21 +86,27 @@ const Quiz = () => {
   let winningRover = '';
   let winningScore = 0;
 
-  if(values.votes.total < 5) {
+  // if(values.isLoading === true) {
+  //   return (<img src="/images/mars.gif" alt="loading" />)
+  /* } else */ if(values.votes.total < 5) {
     return (
       <>
         <div className='flex-column'>
           <StyledDiv>
-            <StyledParagraph>Each of these photographs were taken by one of the rovers!</StyledParagraph>
-            <StyledParagraph>Select your favorite photograph below to determine your favorite Mars photographer!</StyledParagraph>
+            <StyledParagraph data-testId='p1'>Each of these photographs were taken by one of the rovers!</StyledParagraph>
+            <StyledParagraph data-testId='p2'>Select your favorite photograph below to determine your favorite Mars photographer!</StyledParagraph>
           </StyledDiv>
-          <StyledQuiz>
+          <StyledQuiz data-testId='quiz'>
             <StyledParagraph>Selection {values.votes.total + 1}/5 </StyledParagraph>
             <StyledPhotoLayout> 
-              <RoverPicture roverName='curiosity'/>
-              <RoverPicture roverName='spirit'/>
-              <RoverPicture roverName='opportunity'/>
-              <RoverPicture roverName='perseverance'/>
+            { values.isLoading ? <img src="/images/mars.gif" width="240px" alt="loading" /> : (
+              <>
+                <RoverPicture roverName='curiosity'/>
+                <RoverPicture roverName='spirit'/>
+                <RoverPicture roverName='opportunity'/>
+                <RoverPicture roverName='perseverance'/>
+              </>
+              )}
             </StyledPhotoLayout>
           </StyledQuiz>
         </div>
@@ -138,8 +146,7 @@ const StyledParagraph = styled.p`
 `;
 
 const StyledQuiz = styled.div`
-  padding-top: 10vw;
-  
+  padding-top: 10vh;
 `
 
 const StyledDiv = styled.div`
@@ -155,4 +162,3 @@ const StyledDiv = styled.div`
   font-size: 28px;
   font-style: italic;
 `
-

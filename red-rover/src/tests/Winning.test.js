@@ -38,13 +38,3 @@ describe('Winning', () => {
     expect(photos).toBeInTheDocument();
   })
 })
-// test('renders a list of items, upon request', async () => {
-//   const app = render(<App />);
-
-//   fireEvent.click(screen.getByText('Update'));
-
-//   await waitFor(() => screen.getByRole('list'));
-
-//   expect(screen.getByRole('list')).toBeInTheDocument();
-//   expect(screen.getByRole('list')).toHaveClass('Timeline');
-// });
