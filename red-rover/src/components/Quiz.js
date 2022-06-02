@@ -1,10 +1,14 @@
  import React, {useState, useContext, useEffect} from 'react';
 import { RoverContext } from '../RoverContext';
 import { RoverPicture } from './index'
+import { useNavigate } from 'react-router-dom';
+
 
 const Quiz = () => {
   const {values, setters} = useContext(RoverContext);
   const rovers = ['curiosity', 'spirit', 'opportunity', 'perseverance'];
+  // const nav= useNavigate()
+
   const [photos, setPhotos] = useState({
     curiosity: [],
     spirit: [],
@@ -23,7 +27,8 @@ const Quiz = () => {
     curiosity: [],
     spirit: [],
     opportunity: [],
-    perseverance: []
+    perseverance: [],
+    winner: []
   };
 
   
@@ -45,7 +50,7 @@ const Quiz = () => {
     })
     Promise.all(promiseArray)
       .then(()=> {
-        console.log(`roverPhotos: `, roverPhotos);
+        // console.log(`roverPhotos: `, roverPhotos);
         let photoNumbers = [0, 1, 2, 3, 4];
         // for(let i = 0; i < 5; i++) {
         //   photoNumbers.push(Math.floor((Math.random() * data.photos.length)))
@@ -56,7 +61,7 @@ const Quiz = () => {
             return roverPhotos[roverName][num];
           })
         })
-        console.log(`finalPhotos: `, finalPhotos)
+        // console.log(`finalPhotos: `, finalPhotos)
         setters.setQuizPhotos(finalPhotos);
         
       })
@@ -64,47 +69,66 @@ const Quiz = () => {
   }, [])
 
   
-  return (
-    <>
-    <div>
-      {photos.curiosity.map((element, index) => {
-        return (
-          <img key={index} src={element} alt="curiosity" width="200px" />
-        )
-      })}
-    </div>
 
-      {/* {values.quizPhotos.curiosity.map((element, index) => {
-        return (
-          <img key={index} src={element} alt={"curiosity"} width='200px'/>
-        )
-      })} */}
+  const nav= useNavigate();
+  let [endOfQuiz, setEndOfQuiz] = useState(false);
+  let winningRover = '';
+  let winningScore = 0;
 
-    <div>
-      <div>
-        <p>Each of these photographs were taken by one of the rovers!</p>
-        <p>Select your favorite photograph below to determine your favorite Mars photographer!</p>
-      </div>
-      <div>
-        <p>Selection {values.votes.total + 1}/5 </p>
-        <div> 
-          {/* pictures */}
-          {/* // <Link to={`/quiz/${values.votes.total + 1}`} onClick={() => {setters.setVotes(prev => {...prev, values.votes.curiosity++})}} >
-          //   <img src="values.quizPhotos.curiosity[values.votes.total]" alt="Curiosity"  />
-          // </Link> */}
-          <RoverPicture roverName='curiosity'/>
-          <RoverPicture roverName='spirit'/>
-          <RoverPicture roverName='opportunity'/>
-          <RoverPicture roverName='perseverence'/>
+  // useEffect(() => {
+  //   nav({
+  //     goTo: `/winning/${winningRover}`,
+  //     when: endOfQuiz,
+  //   })
+  //   console.log(endOfQuiz);
+  // }, [endOfQuiz])
+
+  
+  if(values.votes.total < 5) {
+    return (
+      <>
+        <div>
+          <div>
+            <p>Each of these photographs were taken by one of the rovers!</p>
+            <p>Select your favorite photograph below to determine your favorite Mars photographer!</p>
+          </div>
+          <div>
+            <p>Selection {values.votes.total + 1}/5 </p>
+            <div> 
+              <RoverPicture roverName='curiosity'/>
+              <RoverPicture roverName='spirit'/>
+              <RoverPicture roverName='opportunity'/>
+              <RoverPicture roverName='perseverance'/>
+            </div>
+          </div>
         </div>
-      </div>
+      </>
+    )
+  } else {
+    //calculate winner
+    
+    const rovers = ['curiosity', 'spirit', 'opportunity', 'perseverance'];
 
-    </div>
+    rovers.forEach(currentRover => {
+      if(values.votes[currentRover] > winningScore) {
+        winningScore = values.votes[currentRover]
+        winningRover = currentRover
+        
+        console.log('Current Rover:', currentRover)
+        console.log('Current Rover Score:', values.votes[currentRover])
+        console.log('Current Winner', winningRover)
+      }
+    })
+    console.log('Final Winnner:', winningRover)
+    
+    //set winner array
+    setters.setQuizPhotos({winner: values.quizPhotos[winningRover]})
 
+    //nav to winner page
+    nav(`/winning/${winningRover}`)
+  }
 
-
-    </>
-  )
+  
 }
 
 export default Quiz;
