@@ -17,7 +17,7 @@ const Gallery = () => {
   }, [])
 
   return (
-    <body data-testId='galleryBody' className='galleryBody'>
+    <div data-testId='galleryBody' className='galleryBody'>
       <div className='flex-container'>
         <StyledGalleryHeader>{values.galleryRover}</StyledGalleryHeader>
         <div className="roverGallery">
@@ -26,7 +26,7 @@ const Gallery = () => {
           ))}
         </div>
       </div>
-    </body>
+    </div>
   )
 }
 
@@ -42,7 +42,7 @@ width: 100%;
 height: 100px;
 padding: 5vh;
 margin-bottom: 0;
-margin-top: 0px;
+margin-top: 0;
 color: #f3e3d6;
 text-align: center;
 text-shadow: 1px 1px 2px rgb(255, 255, 255), 0 0 25px rgb(139, 5, 5), 0 0 5px rgb(0, 0, 0);

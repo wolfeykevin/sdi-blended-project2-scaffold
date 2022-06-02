@@ -1,14 +1,24 @@
- import React, {useState, useContext, useEffect} from 'react';
+/* ---------- Import Statements ---------- */
+import React, {useState, useContext, useEffect} from 'react';
 import { RoverContext } from '../RoverContext';
-import { RoverPicture } from './index'
+import { RoverPicture } from './index';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import './Quiz.css';
 
+/* ------------------------------------ */
 
 const Quiz = () => {
-  const {values, setters} = useContext(RoverContext);
-  const rovers = ['curiosity', 'spirit', 'opportunity', 'perseverance'];
-  // const nav= useNavigate()
 
+  /* --- Section I - Define Function Variables --- */   
+
+  // import context values & setters
+  const {values, setters} = useContext(RoverContext);
+
+  // create array of rover names to loop over in upcoming forEach
+  const rovers = ['curiosity', 'spirit', 'opportunity', 'perseverance'];
+
+  // is the state variable "photos" still being used here?
   const [photos, setPhotos] = useState({
     curiosity: [],
     spirit: [],
@@ -16,6 +26,7 @@ const Quiz = () => {
     perseverance: []
   });
 
+  // local scope variable storing the fetched image urls
   const roverPhotos = {
     curiosity: [],
     spirit: [],
@@ -23,6 +34,7 @@ const Quiz = () => {
     perseverance: []
   };
 
+  // stores the five selected photos for each rover used in the quiz rounds
   const finalPhotos = {
     curiosity: [],
     spirit: [],
@@ -31,132 +43,116 @@ const Quiz = () => {
     winner: []
   };
 
-  
+  /* --- Section II - Fetch and Select Rover Photos --- */   
 
+  // sol will be used
   const [sol, setSol] = useState(0);
 
+  // define accumulator variable to store an array of promises for Promise.all
   let promiseArray = [];
 
+  // fetch photos by sol date for each rover
   useEffect(() => {
     rovers.forEach((roverName) => {
       //generate number between 0 and values.maxSol.[rover]
       // console.log(values.maxSol)
       // setSol(Math.floor((Math.random() * values.maxSol[roverName])))
+      
       promiseArray.push(fetch(`https://mars-photos.herokuapp.com/api/v1/rovers/${roverName}/photos?sol=10`)
         .then(response => response.json())
         .then(data => data.photos.map(photo => photo["img_src"]))
         .then(data => roverPhotos[roverName] = data))
-    
+      
     })
     Promise.all(promiseArray)
       .then(()=> {
-        // console.log(`roverPhotos: `, roverPhotos);
-        let photoNumbers = [0, 1, 2, 3, 4];
-        // for(let i = 0; i < 5; i++) {
-        //   photoNumbers.push(Math.floor((Math.random() * data.photos.length)))
-        // }
         rovers.forEach((roverName) => {
+          let photoNumbers = [];
+          for(let i = 0; i < 5; i++) {
+            photoNumbers.push(Math.floor((Math.random() * roverPhotos[roverName].length)))
+          }
           finalPhotos[roverName] = photoNumbers.map( (num) => {
-            //fix img_src stuff
             return roverPhotos[roverName][num];
           })
         })
-        // console.log(`finalPhotos: `, finalPhotos)
         setters.setQuizPhotos(finalPhotos);
-        
       })
-  
   }, [])
 
-  
-
+  /* --- Section III - Render Quiz Photos & Navigate to Winner Page --- */  
   const nav= useNavigate();
-  let [endOfQuiz, setEndOfQuiz] = useState(false);
   let winningRover = '';
   let winningScore = 0;
 
-  // useEffect(() => {
-  //   nav({
-  //     goTo: `/winning/${winningRover}`,
-  //     when: endOfQuiz,
-  //   })
-  //   console.log(endOfQuiz);
-  // }, [endOfQuiz])
-
-  
   if(values.votes.total < 5) {
     return (
       <>
-        <div>
-          <div>
-            <p>Each of these photographs were taken by one of the rovers!</p>
-            <p>Select your favorite photograph below to determine your favorite Mars photographer!</p>
-          </div>
-          <div>
-            <p>Selection {values.votes.total + 1}/5 </p>
-            <div> 
+        <div className='flex-column'>
+          <StyledDiv>
+            <StyledParagraph>Each of these photographs were taken by one of the rovers!</StyledParagraph>
+            <StyledParagraph>Select your favorite photograph below to determine your favorite Mars photographer!</StyledParagraph>
+          </StyledDiv>
+          <StyledQuiz>
+            <StyledParagraph>Selection {values.votes.total + 1}/5 </StyledParagraph>
+            <StyledPhotoLayout> 
               <RoverPicture roverName='curiosity'/>
               <RoverPicture roverName='spirit'/>
               <RoverPicture roverName='opportunity'/>
               <RoverPicture roverName='perseverance'/>
-            </div>
-          </div>
+            </StyledPhotoLayout>
+          </StyledQuiz>
         </div>
       </>
     )
   } else {
-    //calculate winner
-    
-    const rovers = ['curiosity', 'spirit', 'opportunity', 'perseverance'];
-
+    // calculate winner based on most votes
     rovers.forEach(currentRover => {
       if(values.votes[currentRover] > winningScore) {
         winningScore = values.votes[currentRover]
         winningRover = currentRover
-        
-        console.log('Current Rover:', currentRover)
-        console.log('Current Rover Score:', values.votes[currentRover])
-        console.log('Current Winner', winningRover)
-      }
-    })
-    console.log('Final Winnner:', winningRover)
-    
-    //set winner array
-    setters.setQuizPhotos({winner: values.quizPhotos[winningRover]})
+      };
+    });
 
-    //nav to winner page
+    // nav to winner page
     nav(`/winning/${winningRover}`)
-  }
-
-  
-}
+  };
+};
 
 export default Quiz;
 
-/*
-Runs only once
-  page renders, fetches for all quizzes
-  1 fetch (to determine maxSol)
-    https://mars-photos.herokuapp.com/api/v1/rovers
-    [data].rovers.[index].max_sol
 
-  4 fetches, (1 for each rover) (all from ranom sol)
-    https://mars-photos.herokuapp.com/api/v1/rovers/[rover]/photos?sol=[sol]
-    [data].photos.[index].img_src
-  get length of photos array
-  if empty array, re-fetch with different sol
-  pick 5 random numbers from 0 to length
-  store fetch data into context
-    quizPhotos.[rover]
-runs each quiz (1-5)
-  display photos for index [votes.total]
-  when a photo is clicked on
-    navigates to next quiz (unless it's that last quiz) (/quiz/:quizNumber)
-    store which rover they clicked on in votes.[rover]
+/* --- Styled Components --- */
 
-on last quiz
-  determine winning rover based on votes
-  move winnning rover's photos to quizPhotos.winner
-  navigate to /winning/:rover
+const StyledPhotoLayout = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+`;
 
-*/
+const StyledParagraph = styled.p`
+  color: white;
+  font-weight: bold;
+  text-align: center;
+`;
+
+const StyledQuiz = styled.div`
+  padding-top: 10vw;
+  
+`
+
+const StyledDiv = styled.div`
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 75px;
+  padding: 15px;
+  line-height: 30px;
+  background: rgba(25, 25, 25, 0.5);
+  color: white;
+  font-weight: bold;
+  font-size: 28px;
+  font-style: italic;
+`
+

@@ -15,6 +15,8 @@ const { values, setters } = useContext(RoverContext);
 
   let location = useLocation();
   let path = location.pathname;
+  let roverName = path.slice(9);
+  
   if(path.includes('curiosity')) {
     selected = curiosityObj
   } else if(path.includes('spirit')) {
@@ -29,48 +31,48 @@ const { values, setters } = useContext(RoverContext);
 
   return (
     <div className="body">
-    <h1 data-testId='headerOne' className='winning-header'>The winner is... {selected.name}!</h1>
+      <h1 data-testId='headerOne' className='winning-header'>The winner is... {selected.name}!</h1>
 
-    <div className='flex-contain'>
-      <img data-testId='cardImg' className='cardImg' src={selected.cardImg} alt={selected.name}/>
+      <div className='flex-contain'>
+        <img data-testId='cardImg' className='cardImg' src={selected.cardImg} alt={selected.name}/>
 
-      <table data-testId ='table'>
-          <tbody>
-            <tr>
-              <td>Name:</td>
-              <td>{selected.name}</td>
-            </tr>
-            <tr>
-              <td>Purpose:</td>
-              <td>{selected.purpose}</td>
-            </tr>
-            <tr>
-              <td>Mass:</td>
-              <td>{selected.mass} lbs</td>
-            </tr>
-            <tr>
-              <td>Launch Date:</td>
-              <td>{selected.launchDate}</td>
-            </tr>
-            <tr>
-              <td>Landing Date:</td>
-              <td>{selected.landingDate}</td>
-            </tr>
-            <tr>
-              <td>Total Images:</td>
-              <td>{selected.totalImages}</td>
-            </tr>
-          </tbody>
-        </table>
-    </div>
-    <h2 data-testId='headerTwo' className="winning-header">{selected.name}'s photographs:</h2>
-    <div data-testId='photoDiv' className="winning-photos">
-      {
-        values.quizPhotos.winner.map((item, index) => {
-          return <img key={index}src={item}  alt={'dafs'}/>
-        })
-      }
-    </div>
+        <table data-testId ='table'>
+            <tbody>
+              <tr>
+                <td>Name:</td>
+                <td>{selected.name}</td>
+              </tr>
+              <tr>
+                <td>Purpose:</td>
+                <td>{selected.purpose}</td>
+              </tr>
+              <tr>
+                <td>Mass:</td>
+                <td>{selected.mass} lbs</td>
+              </tr>
+              <tr>
+                <td>Launch Date:</td>
+                <td>{selected.launchDate}</td>
+              </tr>
+              <tr>
+                <td>Landing Date:</td>
+                <td>{selected.landingDate}</td>
+              </tr>
+              <tr>
+                <td>Total Images:</td>
+                <td>{selected.totalImages}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      <h2 data-testId='headerTwo' className="winning-header">{selected.name}'s photographs:</h2>
+      <div data-testId='photoDiv' className="winning-photos">
+        {
+          values.quizPhotos[roverName].map((item, index) => {
+            return <img key={index}src={item}  alt={'dafs'}/>
+          })
+        }
+      </div>
     </div>
   )
 }

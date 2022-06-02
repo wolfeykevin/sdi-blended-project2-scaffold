@@ -26,10 +26,11 @@ const Landing = () => {
 
       <StyledBackground>
         <StyledHeader data-testId='header'>Mars Rover Photo Gallery and Quiz</StyledHeader>
-        <StyledParagraph>
-          Select a rover to see its photo gallery or click the blue button below to start the quiz!
-        </StyledParagraph>
+        
         <StyledRoverDiv>
+          <StyledParagraph>
+            Select a rover to see its photo gallery or click the blue button below to start the quiz!
+          </StyledParagraph>
           <div>
             <Link data-testId='linkOne' to={`/gallery/spirit`} onClick={() => {setters.setGalleryRover("spirit")}}>
               {<StyledImage src={"/images/rover-portrait-2-spirit.png"} alt="Spirit"/>}
@@ -45,8 +46,25 @@ const Landing = () => {
             </Link>
           </div>
             <StyledButton>
-              <Button data-testId='btn' onClick={() => { nav(`/quiz/1`) }} variant="contained" size="large">
-                  Start Quiz!
+              <Button data-testId='btn' onClick={() => {
+                  setters.setQuizPhotos({
+                    curiosity: [],
+                    spirit: [],
+                    opportunity: [],
+                    perseverance: [],
+                    winner: []
+                  });
+                  setters.setVotes( {
+                    curiosity: 0,
+                    spirit: 0,
+                    opportunity: 0,
+                    perseverance: 0,
+                    total: 0
+                  });
+                  nav(`/quiz/1`) 
+                }}
+                variant="contained" size="large">
+                Start Quiz!
               </Button>
             </StyledButton>
         </StyledRoverDiv>
@@ -57,7 +75,6 @@ const Landing = () => {
 
 export default Landing;
 
-
 const StyledBackground = styled.div`
   background-image: url("/images/background-landing.jpg");
   background-position: center;
@@ -66,10 +83,6 @@ const StyledBackground = styled.div`
   text-align: center;
   width: 100vw;
   height: 100vh;
-
-  button: {
-
-  }
 `;
 const StyledHeader = styled.h1`
   font-size: 40px;
@@ -107,7 +120,7 @@ const StyledParagraph = styled.p`
 
 const StyledRoverDiv = styled.div`
   position: fixed;
-  top: 50%;
+  top: 35%;
   left: 50%;
   margin-left: -480px;
 `;
@@ -117,8 +130,5 @@ const StyledButton = styled.div`
   transition: all 0.75s ease;
   &:hover {
     transform: scale(1.2)
-
   }
-
-
 `;
