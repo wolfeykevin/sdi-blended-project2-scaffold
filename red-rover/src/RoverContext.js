@@ -30,7 +30,7 @@ const AppProvider = ({ children }) => {
     spirit: [],
     opportunity: [],
     perseverance: [],
-    winner: []
+    winner: ["http://mars.nasa.gov/mer/gallery/all/1/f/200/1F145938997ESF3505P1127L0M1-BR.JPG", "http://mars.nasa.gov/mer/gallery/all/1/f/200/1F145938997ESF3505P1127L0M1-BR.JPG", "http://mars.nasa.gov/mer/gallery/all/1/f/200/1F145938997ESF3505P1127L0M1-BR.JPG"]
   });
 
   const [galleryRover, setGalleryRover] = useState('')

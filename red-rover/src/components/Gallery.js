@@ -5,9 +5,7 @@ import styled from 'styled-components';
 import { RoverContext } from '../RoverContext';
 
 const Gallery = () => {
-
   const { values, setters } = useContext(RoverContext)
-
   const [images, setImages] = useState([]);
 
   useEffect(() => {
@@ -19,18 +17,16 @@ const Gallery = () => {
   }, [])
 
   return (
-    <body className='galleryBody'>
+    <body data-testId='galleryBody' className='galleryBody'>
       <div className='flex-container'>
         <h1>{values.galleryRover}</h1>
         <div className="roverGallery">
-          {images.map(image => (
+          {images.map((image, index) => (
             <img id="roverImage" key={image.id} src={image.url} alt={image.id}></img>
           ))}
         </div>
       </div>
     </body>
-
-
   )
 }
 
