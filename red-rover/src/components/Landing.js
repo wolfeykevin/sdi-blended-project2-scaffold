@@ -6,12 +6,22 @@ import Button from '@mui/material/Button';
 // import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
 // import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
-
-
-
 const Landing = () => {
   const nav= useNavigate()
   const {values, setters} = useContext(RoverContext);
+
+  //run the first fetch on the landing page
+  fetch(`https://mars-photos.herokuapp.com/api/v1/rovers`)
+  .then(response => response.json())
+  .then( data => {
+    setters.setMaxSol({
+      curiosity:    data.rovers[0].max_sol,
+      spirit:       data.rovers[1].max_sol,
+      opportunity:  data.rovers[2].max_sol,
+      perseverance: data.rovers[3].max_sol
+    })
+  })
+
   return (
 
       <StyledBackground>
