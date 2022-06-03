@@ -20,10 +20,9 @@ const setup = () => render(
       expect(instructions).toContainHTML('Each of these photographs were taken by one of the rovers!');
       expect(instructions2).toContainHTML('Select your favorite photograph below to determine your favorite Mars photographer!');
     })
-    test('expect quiz to display on the page', () => {
+    test('expect quiz photos to display on the page', () => {
       screen.findByTestId('photos').then(photos => {
         expect(photos).toHaveLength(4);
       })
-      
     })
 })

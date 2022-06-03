@@ -15,4 +15,9 @@ describe('Gallery', () => {
     let image = screen.getByTestId('galleryBody');
     expect(image).toBeInTheDocument();
   })
+  test('should display header for corresponding rover', () => {
+    setup()
+    let header = screen.getByTestId('galleryHeader');
+    expect(header).toBeInTheDocument();
+  })
 })
