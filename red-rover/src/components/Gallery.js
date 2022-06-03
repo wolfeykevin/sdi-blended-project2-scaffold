@@ -8,10 +8,6 @@ const Gallery = () => {
   const { values, setters } = useContext(RoverContext)
   const [images, setImages] = useState([]);
 
-  const zoomPhoto = (e) => {
-    console.log('Target Image:', e.target.id)
-  };
-
   let sol = 1;
 
   useEffect(() => {
@@ -28,12 +24,12 @@ const Gallery = () => {
   }, [])
 
     return (
-      <div data-testId='galleryBody' className='galleryBody'>
+      <div data-testid='galleryBody' className='galleryBody'>
         <div className='flex-container'>
-          <StyledGalleryHeader>{values.galleryRover}</StyledGalleryHeader>
+          <StyledGalleryHeader data-testid='galleryHeader'>{values.galleryRover}</StyledGalleryHeader>
           <div className="roverGallery">
             { values.isLoading ? <img className='load' src="/images/mars.gif" width="240px" alt="loading" /> : images.map((image, index) => (
-              <img id={image.id} key={image.id} src={image.url} alt={image.id} onClick={(e) => zoomPhoto(e)}></img>
+              <img id={image.id} key={image.id} src={image.url} alt={image.id} ></img>
             ))}
           </div>
         </div>

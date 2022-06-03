@@ -39,6 +39,7 @@ td {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  background-color: transparent;
 }
 
 .winning-photos img {

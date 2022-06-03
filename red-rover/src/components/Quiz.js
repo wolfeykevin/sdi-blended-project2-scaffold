@@ -93,21 +93,21 @@ const Quiz = () => {
       <>
         <div className='flex-column'>
           <StyledDiv>
-            <StyledParagraph data-testId='p1'>Each of these photographs were taken by one of the rovers!</StyledParagraph>
-            <StyledParagraph data-testId='p2'>Select your favorite photograph below to determine your favorite Mars photographer!</StyledParagraph>
+            <StyledParagraph data-testid='p1'>Each of these photographs were taken by one of the rovers!</StyledParagraph>
+            <StyledParagraph data-testid='p2'>Select your favorite photograph below to determine your favorite Mars photographer!</StyledParagraph>
           </StyledDiv>
-          <StyledQuiz data-testId='quiz'>
+          <StyledQuiz>
             <StyledParagraph>Selection {values.votes.total + 1}/5 </StyledParagraph>
-            <StyledPhotoLayout> 
-            { values.isLoading ? <img src="/images/mars.gif" width="240px" alt="loading" /> : (
-              <>
-                <RoverPicture roverName='curiosity'/>
-                <RoverPicture roverName='spirit'/>
-                <RoverPicture roverName='opportunity'/>
-                <RoverPicture roverName='perseverance'/>
-              </>
-              )}
-            </StyledPhotoLayout>
+              <StyledPhotoLayout data-testid='photos'> 
+              { values.isLoading ? <img src="/images/mars.gif" width="240px" alt="loading" /> : (
+                <>
+                  <RoverPicture roverName='curiosity'/>
+                  <RoverPicture roverName='spirit'/>
+                  <RoverPicture roverName='opportunity'/>
+                  <RoverPicture roverName='perseverance'/>
+                </>
+                )}
+              </StyledPhotoLayout>
           </StyledQuiz>
         </div>
       </>

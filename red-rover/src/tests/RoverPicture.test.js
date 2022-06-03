@@ -21,4 +21,13 @@ describe('Rover Picture', () => {
       })
     })
   })
+
+  test('should display pictures as links', () => {
+    setup();
+    screen.findAllByRole('link').then( (links) => {
+      links.forEach( (link) => {
+        expect(link).toBeInTheDocument();
+      })
+    })
+  })
 })

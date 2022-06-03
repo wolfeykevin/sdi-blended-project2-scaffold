@@ -21,7 +21,9 @@ const setup = () => render(
       expect(instructions2).toContainHTML('Select your favorite photograph below to determine your favorite Mars photographer!');
     })
     test('expect quiz to display on the page', () => {
-      let quiz = screen.getByTestId('quiz');
-      expect(quiz).toBeInTheDocument();
+      screen.findByTestId('photos').then(photos => {
+        expect(photos).toHaveLength(4);
+      })
+      
     })
-  })
+})

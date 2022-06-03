@@ -35,12 +35,12 @@ const { values, setters } = useContext(RoverContext);
 
   return (
     <div className="body">
-      <h1 data-testId='headerOne' className='winning-header'>The winner is... {selected.name}!</h1>
+      <h1 data-testid='headerOne' className='winning-header'>The winner is... {selected.name}!</h1>
 
       <div className='flex-contain'>
-        <img data-testId='cardImg' className='cardImg' src={selected.cardImg} alt={selected.name}/>
+        <img data-testid='cardImg' className='cardImg' src={selected.cardImg} alt={selected.name}/>
 
-        <table data-testId ='table'>
+        <table data-testid ='table'>
             <tbody>
               <tr>
                 <td>Name:</td>
@@ -69,8 +69,8 @@ const { values, setters } = useContext(RoverContext);
             </tbody>
           </table>
       </div>
-      <h2 data-testId='headerTwo' className="winning-header">{selected.name}'s photographs:</h2>
-      <div data-testId='photoDiv' className="winning-photos">
+      <h2 data-testid='headerTwo' className="winning-header">{selected.name}'s photographs:</h2>
+      <div data-testid='photoDiv' className="winning-photos">
         {
           values.quizPhotos[roverName].map((item, index) => {
             return <img key={index}src={item}  alt={'dafs'}/>

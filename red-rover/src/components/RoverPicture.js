@@ -9,7 +9,7 @@ const RoverPicture = ({roverName}) => {
   return (
     <StyledPhoto>
       <Link to={`/quiz/${values.votes.total + 2}`} onClick={() => {setters.setVotes(prev => ({[roverName]: values.votes[roverName]++, total: values.votes.total++, ...prev}))}} >
-        <img src={values.quizPhotos[roverName][values.votes.total]} alt="Mars Rover Photo" width="240px" height="240px" />
+        <img src={values.quizPhotos[roverName][values.votes.total]} alt="No submission... rover on vacation." width="240px" height="240px" />
       </Link>
     </StyledPhoto>
   )

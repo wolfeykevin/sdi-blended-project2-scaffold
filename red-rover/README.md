@@ -1,8 +1,8 @@
 # **Welcome to SDI #10: Project 2, Martian Rover Exploration**
 ##### Project By:  Cybyl Hancock, Daniel Salazar, Zachary Haines, Darius DeSpain, and Kevin Wolfe
 
-#### **Repository Directions:**
-1)  Ensure you're connected to the internet; the project requires an internet connection for API fetch requests and testing.
+### **Repository Directions:**
+1)  Ensure you're connected to the internet; the project requires an internet connection for Git access, API fetch requests, and testing.
 
 2)  Navigate to where you want to clone the repository.
 
@@ -50,7 +50,20 @@
 
     >>Installs Mock Service Worker for mock testing
 
-#### Project Objectives:
+#### Known Bugs:
+>Quiz occasionally does not populate all photos for a given rover due to no photos being taken by that rover on that specific Sol day.
+>When application is not maximized, white space is visible when the gradient background stops.
+>Photo gallery may hang forever on load; requires browser refresh.
+>Quiz voting does not recognize ties due to Winning page being unable to display two winners.
+
+#### Project Planning:
+>Project Trello:
+>>https://trello.com/b/lcNhlQ3F/sdi-project-2
+
+>Project Figma Wireframes:
+>>https://www.figma.com/file/NDEYjEq388CvnICtWlzMdT/SDI-Project-%232?node-id=0%3A1
+
+##### Project Objectives:
 >1)  Should utilize functional Hooks-based React Components.
 >2)  Should implement standard hooks such as useState, useEffect, and useContext.
 >3)  Should recognize situations and implement custom hooks where they can provide dynamic reusable hooks for multiple components to utilize.
@@ -67,3 +80,5 @@
 >>
 >>12b)  No hard styling guides or requirements will be assessed, just ensure that the styling for each component matches well with the rest of the application.
         Should implement live data from a third party API or utilize dummy data that you create.
+
+

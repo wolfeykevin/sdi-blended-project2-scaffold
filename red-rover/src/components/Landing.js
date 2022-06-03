@@ -25,28 +25,28 @@ const Landing = () => {
   return (
 
       <StyledBackground>
-        <StyledHeader data-testId='header'>Mars Rover Photo Gallery and Quiz</StyledHeader>
+        <StyledHeader data-testid='header'>Mars Rover Photo Gallery and Quiz</StyledHeader>
         
         <StyledRoverDiv>
           <StyledParagraph>
             Select a rover to see its photo gallery or click the blue button below to start the quiz!
           </StyledParagraph>
           <div>
-            <Link data-testId='linkOne' to={`/gallery/spirit`} onClick={() => {setters.setGalleryRover("spirit")}}>
+            <Link data-testid='linkOne' to={`/gallery/spirit`} onClick={() => {setters.setGalleryRover("spirit")}}>
               {<StyledImage src={"/images/rover-portrait-2-spirit.png"} alt="Spirit"/>}
             </Link>
-            <Link data-testId='linkTwo' to={`/gallery/opportunity`} onClick={() => {setters.setGalleryRover("opportunity")}}>
+            <Link data-testid='linkTwo' to={`/gallery/opportunity`} onClick={() => {setters.setGalleryRover("opportunity")}}>
               {<StyledImage src={"/images/rover-portrait-3-opportunity.png"} alt="Opportunity"/>}
             </Link>
-            <Link data-testId='linkThree' to={`/gallery/curiosity`} onClick={() => {setters.setGalleryRover("curiosity")}}>
+            <Link data-testid='linkThree' to={`/gallery/curiosity`} onClick={() => {setters.setGalleryRover("curiosity")}}>
               {<StyledImage src={"/images/rover-portrait-4-curiosity.png"} alt="Curiosity"/>}
             </Link>
-            <Link data-testId='linkFour' to={`/gallery/perseverance`} onClick={() => {setters.setGalleryRover("perseverance")}}>
+            <Link data-testid='linkFour' to={`/gallery/perseverance`} onClick={() => {setters.setGalleryRover("perseverance")}}>
               {<StyledImage src={"/images/rover-portrait-5-perseverance.png"} alt="Opportunity"/>}
             </Link>
           </div>
             <StyledButton>
-              <Button data-testId='btn' onClick={() => {
+              <Button data-testid='btn' onClick={() => {
                   setters.setQuizPhotos({
                     curiosity: [],
                     spirit: [],
@@ -82,7 +82,7 @@ const StyledBackground = styled.div`
   background-size: cover;
   text-align: center;
   width: 100vw;
-  height: 100vh;
+  height: 97.3vh;
 `;
 const StyledHeader = styled.h1`
   font-size: 40px;
