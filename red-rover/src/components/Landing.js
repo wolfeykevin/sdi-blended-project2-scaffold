@@ -3,8 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { RoverContext } from '../RoverContext';
 import styled from 'styled-components';
 import Button from '@mui/material/Button';
-// import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
-// import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+
 
 const Landing = () => {
   const nav= useNavigate()
