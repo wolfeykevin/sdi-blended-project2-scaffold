@@ -26,7 +26,7 @@ const Landing = () => {
 
       <StyledBackground>
         <StyledHeader data-testId='header'>Mars Rover Photo Gallery and Quiz</StyledHeader>
-        
+
         <StyledRoverDiv>
           <StyledParagraph>
             Select a rover to see its photo gallery or click the blue button below to start the quiz!
@@ -46,7 +46,7 @@ const Landing = () => {
             </Link>
           </div>
             <StyledButton>
-              <Button data-testId='btn' onClick={() => {
+              <Button className="btn" data-testId='btn' onClick={() => {
                   setters.setQuizPhotos({
                     curiosity: [],
                     spirit: [],
@@ -61,7 +61,7 @@ const Landing = () => {
                     perseverance: 0,
                     total: 0
                   });
-                  nav(`/quiz/1`) 
+                  nav(`/quiz/1`)
                 }}
                 variant="contained" size="large">
                 Start Quiz!
