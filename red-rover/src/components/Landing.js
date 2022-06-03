@@ -25,7 +25,7 @@ const Landing = () => {
   return (
 
       <StyledBackground>
-        <StyledHeader data-testId='header'>Mars Rover Photo Gallery and Quiz</StyledHeader>
+        <StyledHeader data-testid='header'>Mars Rover Photo Gallery and Quiz</StyledHeader>
 
         <StyledRoverDiv>
           <StyledParagraph>
@@ -46,7 +46,7 @@ const Landing = () => {
             </Link>
           </div>
             <StyledButton>
-              <Button className="btn" data-testId='btn' onClick={() => {
+              <Button className="btn" data-testid='btn' onClick={() => {
                   setters.setQuizPhotos({
                     curiosity: [],
                     spirit: [],
